@@ -6,8 +6,8 @@ using namespace std;
 typedef unsigned long long ULONG;
 
 int main() {
-    int n, s, p, q;
-    cin >> n >> s >> p >> q;
+    int N, S, P, Q;
+    cin >> N >> S >> P >> Q;
 
     ULONG p_231 = static_cast<ULONG>(pow(2, 31));
 

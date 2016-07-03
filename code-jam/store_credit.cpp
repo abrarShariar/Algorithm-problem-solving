@@ -1,5 +1,11 @@
+/*
+    House Stark
+
+    SOLVED for small and large input
+    https://code.google.com/codejam/contest/351101/dashboard#s=p0
+*/
+
 #include<iostream>
-#include<fstream>
 using namespace std;
 
 int Credit,List,n2,testCase;

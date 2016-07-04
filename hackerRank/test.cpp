@@ -1,11 +1,12 @@
 #include<iostream>
+#include<map>
 using namespace std;
 
 int main(){
-    string str="";
-    str.push_back('A');
+    map<char,string>keyPad;
+    keyPad['2']="abc";
+    keyPad['3']="def";
 
-    cout<<str;
-
+    cout<<keyPad['2']<<endl;
 
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    
+    <!-- <div class="comment-list" data-count=10></div> -->
+    <div class="comment-list" data-count=2></div>
+    <!-- <div class="comment-list" data-count=1></div> -->
+    
+    
+    <script>
+      
+      $(document).ready(function() {
+        solution();
+      });
+      
+      const data = [{
+              "id": 123,
+              "username": "User 1",
+              "message": "Cool product!"
+          }, {
+              "id": 456,
+              "username": "User 2",
+              "message": "Didn't like it that much"
+      }];
+      
+      function solution() {
+        
+        
+        let loader = '<div>Loading</div>'; 
+        $(commentList[i]).html(loader);
+        
+        let commentList = document.getElementsByClassName("comment-list");
+        for(let i=0;i<commentList.length;i++){
+            let dataCount = $(commentList[i]).attr('data-count');
+            let domNode = '';
+            data.forEach(el => {
+              let commentItem = `
+              <div class="comment-item">
+                <div class="comment-item__username">${el.username}</div>
+                <div class="comment-item__message">${el.message}</div>
+              </div>
+              `;
+              console.log(commentItem);
+              domNode += commentItem;
+              // domNode.app(commentItem);
+            });
+            $(commentList[i]).html(domNode);
+            
+            
+            $.ajax({
+              url: `https://www.example.com/comments?count=${dataCount}`,
+              headers: {  'Access-Control-Allow-Origin': '*' },
+              success: function(result) {
+                console.log(result);
+              },
+              error: function() {
+                $(commentList[i]).html(mainNode);
+              }
+            
+            });
+        }
+      }
+      
+    </script>
+    
+  </body>
+</html>

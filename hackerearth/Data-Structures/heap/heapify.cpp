@@ -1,7 +1,6 @@
 #include<iostream>
 using namespace std;
 
-
 void maxHeapify(int *Arr, int i, int N){
     int left = 2*i;
     int right = 2*i+1;
@@ -38,8 +37,20 @@ void display(int *Arr, int N){
     }
 }
 
-int main(){
 
+void heapSort(int *arr,int N){
+    int heapSize = N;
+    for(int i=N;i>=2;i--){
+        int temp = arr[1];
+        arr[1] = arr[i];
+        arr[i] = temp;
+        heapSize--;
+        maxHeapify(arr, 1, heapSize);
+    }
+}
+
+
+int main(){
     //input
     int N;
     cin>>N;
@@ -51,8 +62,10 @@ int main(){
 
     //build heap
     buildMaxHeap(Arr,N);
-
-    //print
+    cout<<"Max heap:"<<endl;
     display(Arr, N);
-
+    //print
+    cout<<"After Heapsort:"<<endl;
+    display(Arr, N);
+    //heap sort from max heap
 }

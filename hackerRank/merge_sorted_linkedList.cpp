@@ -1,5 +1,5 @@
 //SOLVED
-//https://www.hackerrank.com/challenges/reverse-a-linked-list/problem
+//https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem
 #include<iostream>
 #include<limits>
 using namespace std;
@@ -63,12 +63,12 @@ SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNo
 
     while(head1){
         newList->insert_node(head1->data);
-        head1->next;
+        head1 = head1->next;
     }
 
     while(head2){
         newList->insert_node(head2->data);
-        head2->next;
+        head2 = head2->next;
     }
 
     return newList->head;

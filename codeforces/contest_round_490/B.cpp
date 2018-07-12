@@ -19,7 +19,6 @@ int main(){
         }
     }
 
-
     for(int i=divisorCount-1;i>=0;i--){
         int l = 0;
         int r = divisor[i] - 1;

@@ -1,27 +1,28 @@
-# RUNTIME ERROR
+# SOLVED: https://www.hackerrank.com/challenges/python-sort-sort/problem
+import operator
+
+def sort_and_shit(N, M):
+    arr = []
+    for i in range(N):
+        rows = input().strip().split(' ')
+        rows = list(map(lambda x: int(x), rows))
+        arr.append(rows)
+
+    k = int(input())
+
+    filter_dict = {}
+    for i in range(N):
+        filter_dict[i] = arr[i][k]
+
+    sorted_dict = sorted(filter_dict.items(), key=operator.itemgetter(1))
+
+    # print output
+    for x in sorted_dict:
+        for i in range(M):
+            print(arr[x[0]][i], end=" ")
+        print("")
+
+
 N, M = input().strip().split(' ')
 N, M = [int(N), int(M)]
-
-arr = []
-
-for i in range(N):
-    temp = []
-    rows = input().strip().split(' ')
-    rows = list(map(lambda x: int(x), rows))
-    arr.append(rows)
-
-k = int(input())
-
-# get values based on k and sort
-new_list = {}
-for i in range(N):
-    new_list[arr[i][k]] = i
-
-# sort dict based on values
-sorted_list = sorted(new_list.keys())
-
-# output the shit out
-for i in range(N):
-    for j in range(M):
-        print(arr[new_list[sorted_list[i]]][j], end=" ")
-    print("")
+sort_and_shit(N,M)

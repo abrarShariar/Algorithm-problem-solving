@@ -1,14 +1,15 @@
-def greedy(arr):
-    if len(arr) < 2:
+def greedy(stock_prices):
+    if len(stock_prices) < 2:
         raise ValueError("Stock prices index out of range")
-        
-    min_price = arr[0]
-    max_profit = arr[1] - arr[0]
 
-    for current_price in arr:
-        min_price = min(current_price, min_price)
+    min_price = stock_prices[0]
+    max_profit = stock_prices[1] - stock_prices[0]
+
+    for i in range(1,len(stock_prices)):
+        current_price = stock_prices[i]
         potential_profit = current_price - min_price
         max_profit = max(max_profit, potential_profit)
+        min_price = min(current_price, min_price)
 
     return max_profit
 

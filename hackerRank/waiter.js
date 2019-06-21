@@ -1,8 +1,9 @@
+// REWORK: https://www.hackerrank.com/challenges/waiter/problem
 function waiter(number, q) {
 
     let primeList = [];
     let s = 2;
-    for (let i = 0; i < q;i++) {
+    for (let i = 0; i <= q;i++) {
         let c = 0;
         for (let j = 1;j<=s/2;j++) {
           if (s%j === 0) {
@@ -15,7 +16,6 @@ function waiter(number, q) {
         s++;
     }
 
-
     let A = [];
     let B = [];
 
@@ -27,10 +27,8 @@ function waiter(number, q) {
 
     for (let i=0;i<q;i++) {
       let p = primeList[i];
-      let targetA = A[i];
-
-      while (targetA.length !== 0) {
-        let num = targetA.pop();
+      for (let j = 0;j < A[i].length;j++) {
+        let num = A[i].pop();
         if (num%p === 0) {
           B[i].push(num);
         } else {
@@ -51,7 +49,6 @@ function waiter(number, q) {
         resultArr.push(A[i][j]);
       }
     }
-
     return resultArr;
 }
 

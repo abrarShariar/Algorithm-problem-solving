@@ -1,0 +1,3 @@
+select 
+	ROUND(AVG(Salary) - AVG(CAST(REPLACE(CAST(Salary AS VARCHAR(10)), '0', '')) AS SIGNED))) FROM 
+EMPLOYEES

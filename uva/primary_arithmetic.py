@@ -1,38 +1,11 @@
 # problem link: https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=976
-# def main():
-#     while True:
-#         input_arr = input().split(" ")
-#         if (input_arr[0] == "0" and input_arr[1] == "0"):
-#             break
-#         if (len(input_arr[0]) > len(input_arr[1])):
-#             arr1 = input_arr[0]
-#             arr2 = input_arr[1]
-#         else:
-#             arr1 = input_arr[1]
-#             arr2 = input_arr[0]
-#
-#         i = len(arr1) - 1
-#         j = len(arr2) - 1
-#         ct = 0
-#         carry = 0
-#         while (i >= 0):
-#             n2 = 0
-#             if j >= 0:
-#                 n2 = int(arr2[j])
-#             n1 = int(arr1[i])
-#             sum = n1 + n2 + carry
-#             if sum >= 10:
-#                 ct += 1
-#                 carry = 1
-#             i -= 1
-#             j -= 1
-#
-#         if (ct == 0):
-#             print("No carry operation.")
-#         elif (ct == 1):
-#             print(ct, "carry operation.")
-#         else:
-#             print(ct, "carry operations.")
+# ACCEPTED
+
+# for printing to file
+# import sys
+# orig_stdout = sys.stdout
+# f = open('out.txt', 'w')
+# sys.stdout = f
 
 def main():
     while True:
@@ -46,14 +19,16 @@ def main():
         carry = 0
 
         while (n1 or n2):
-            r1 = n1 % 10
-            r2 = n2 % 10
-            n1 = n1 / 10
-            n2 = n2 / 10
+            r1 = int(n1 % 10)
+            r2 = int(n2 % 10)
+            n1 = int(n1 / 10)
+            n2 = int(n2 / 10)
             sum = r1 + r2 + carry
             if sum >= 10:
                 carry = 1
                 ct += 1
+            else:
+                carry = 0
 
         if (ct == 0):
             print("No carry operation.")
@@ -65,3 +40,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # for printing to file
+    # sys.stdout = orig_stdout
+    # f.close()

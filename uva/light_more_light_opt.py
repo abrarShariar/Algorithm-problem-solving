@@ -6,7 +6,7 @@
 # f = open('out.txt', 'w')
 # sys.stdout = f
 
-# import math
+import math
 
 def main():
     while True:
@@ -19,18 +19,26 @@ def main():
 
         N = inp
         arr = []
-        d = 2
         ct = 0
-        while N!= 1:
-            # if N is even, cut by 2 shits
-            while N%d == 0:
-                ct += 1
-                N = N/d
+        while N%2 == 0:
+            ct += 1
+            N = N/2
 
-            d += 1
+        if ct > 0:
+            arr.append(ct)
+            ct = 0
+
+        for i in range(3, int(math.sqrt(N))+1,2):
+            ct = 0
+            while N%i == 0:
+                ct += 1
+                N = N/i
             if ct > 0:
                 arr.append(ct)
-                ct = 0
+
+        if N > 2:
+            print('no')
+            continue
 
         # print thy factors
         fac = 1

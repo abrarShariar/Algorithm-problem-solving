@@ -5,50 +5,71 @@
 # orig_stdout = sys.stdout
 # f = open('out.txt', 'w')
 # sys.stdout = f
+#
+# import math
+#
+# def main():
+#     while True:
+#         inp = int(input())
+#         if inp == 0:
+#             return
+#         if inp == 1:
+#             print('yes')
+#             continue
+#
+#         N = inp
+#         arr = []
+#         ct = 0
+#         while N%2 == 0:
+#             ct += 1
+#             N = N/2
+#
+#         if ct > 0:
+#             arr.append(ct)
+#             ct = 0
+#
+#         for i in range(3, int(math.sqrt(N))+1,2):
+#             ct = 0
+#             while N%i == 0:
+#                 ct += 1
+#                 N = N/i
+#             if ct > 0:
+#                 arr.append(ct)
+#
+#         if N > 2:
+#             print('no')
+#             continue
+#
+#         # print thy factors
+#         fac = 1
+#         for x in arr:
+#             fac = (x+1) * fac
+#
+#         if fac%2 == 0:
+#             print('no')
+#         else:
+#             print('yes')
 
+# SOLVED
 import math
+def isPerfectSquare(x):
+    sr = math.sqrt(x)
+    return ((sr - math.floor(sr) - 0) == 0)
+
 
 def main():
-    while True:
-        inp = int(input())
-        if inp == 0:
-            return
-        if inp == 1:
-            print('yes')
-            continue
-
-        N = inp
-        arr = []
-        ct = 0
-        while N%2 == 0:
-            ct += 1
-            N = N/2
-
-        if ct > 0:
-            arr.append(ct)
-            ct = 0
-
-        for i in range(3, int(math.sqrt(N))+1,2):
-            ct = 0
-            while N%i == 0:
-                ct += 1
-                N = N/i
-            if ct > 0:
-                arr.append(ct)
-
-        if N > 2:
-            print('no')
-            continue
-
-        # print thy factors
-        fac = 1
-        for x in arr:
-            fac = (x+1) * fac
-
-        if fac%2 == 0:
-            print('no')
-        else:
-            print('yes')
+         while True:
+            inp = int(input())
+            if inp == 0:
+                return
+            if inp == 1:
+                print('yes')
+                continue
+            # if perfect square then number of factors is odd
+            if isPerfectSquare(inp):
+                print("yes")
+            else:
+                print("no")
 
 
 if __name__ == "__main__":

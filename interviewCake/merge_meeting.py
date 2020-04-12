@@ -1,39 +1,8 @@
-# OK
-
-# import unittest
-#
-# START_TIME = 0
-# END_TIME = 1
-# def merge_ranges(meetings):
-#     # sort tupples based on key 0
-#     sorted(meetings, key=lambda x: x[0])
-#     start_index = 0
-#     resultList = []
-#     while start_index < len(meetings):
-#         next_index = start_index + 1
-#         current_index = start_index
-#         end_time = meetings[current_index][END_TIME]
-#         if next_index < len(meetings):
-#             while meetings[next_index][START_TIME] <= end_time and next_index < len(meetings):
-#                 end_time = max(meetings[next_index][END_TIME], meetings[current_index][END_TIME])
-#                 next_index += 1
-#                 current_index = next_index
-#                 if next_index >= len(meetings):
-#                     break
-#
-#         resultList.append((meetings[start_index][START_TIME],end_time))
-#         start_index = current_index + 1
-#
-#     return resultList
-#
-#
-#
-#
-
 import unittest
 
 START_TIME = 0
 END_TIME = 1
+
 def merge_ranges(meetings):
     # sort tupples based on key 0
     meetings = sorted(meetings, key=lambda x: x[0])
@@ -63,18 +32,49 @@ def merge_ranges(meetings):
     return resultList
 
 
-#
-# print(merge_ranges([(1, 2), (2, 3)]))
-# print(merge_ranges([(1, 5), (2, 3)]))
-# # FIX
-# print(merge_ranges([(1, 10), (2, 6), (3, 5), (7, 9)]))
-# print(merge_ranges([(5, 6), (6, 8)]))
-# print(merge_ranges([(1, 8), (2, 5)]))
-#
-# print(merge_ranges([(1, 3), (4, 8)]))
-# print(merge_ranges([(1, 4),(2, 5),(5, 8)]))
-#
-print(merge_ranges([(5, 8), (1, 4), (6, 8)]))
-#
-# print(merge_ranges([(1, 10), (2, 5), (6, 8), (9, 10), (10, 12)]))
-# print(merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)]))
+# Tests
+
+class Test(unittest.TestCase):
+
+    def test_meetings_overlap(self):
+        actual = merge_ranges([(1, 3), (2, 4)])
+        expected = [(1, 4)]
+        self.assertEqual(actual, expected)
+
+    def test_meetings_touch(self):
+        actual = merge_ranges([(5, 6), (6, 8)])
+        expected = [(5, 8)]
+        self.assertEqual(actual, expected)
+
+    def test_meeting_contains_other_meeting(self):
+        actual = merge_ranges([(1, 8), (2, 5)])
+        expected = [(1, 8)]
+        self.assertEqual(actual, expected)
+
+    def test_meetings_stay_separate(self):
+        actual = merge_ranges([(1, 3), (4, 8)])
+        expected = [(1, 3), (4, 8)]
+        self.assertEqual(actual, expected)
+
+    def test_multiple_merged_meetings(self):
+        actual = merge_ranges([(1, 4), (2, 5), (5, 8)])
+        expected = [(1, 8)]
+        self.assertEqual(actual, expected)
+
+    def test_meetings_not_sorted(self):
+        actual = merge_ranges([(5, 8), (1, 4), (6, 8)])
+        expected = [(1, 4), (5, 8)]
+        self.assertEqual(actual, expected)
+
+    def test_one_long_meeting_contains_smaller_meetings(self):
+        actual = merge_ranges([(1, 10), (2, 5), (6, 8), (9, 10), (10, 12)])
+        expected = [(1, 12)]
+        self.assertEqual(actual, expected)
+
+    def test_sample_input(self):
+        actual = merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)])
+        expected = [(0, 1), (3, 8), (9, 12)]
+        self.assertEqual(actual, expected)
+
+
+unittest.main(verbosity=2)

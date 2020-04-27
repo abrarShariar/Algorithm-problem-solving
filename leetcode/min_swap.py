@@ -19,20 +19,23 @@ class Solution:
         
         # find the missing keys/extra keys on t
         ct = 0
-        for key in t_dict:
+        for key in t:
             if key not in s_dict.keys():
                 ct += 1
-            elif t_dict[key] > s_dict[key]:
-                ct += (t_dict[key] - s_dict[key])
-        
+            else: 
+                if s_dict[key] > 0:
+                    s_dict[key] -= 1
+                else:
+                    ct += 1
         return ct
 
+
 x = Solution()
-print(x.minSteps("leetcode", "practice"))
-print(x.minSteps("bab", "aba"))
-print(x.minSteps("anagram", "mangaar"))
-print(x.minSteps("xxyyzz", "xxyyzz"))
-print(x.minSteps("friend", "family"))
+# print(x.minSteps("leetcode", "practice"))
+# print(x.minSteps("bab", "aba"))
+# print(x.minSteps("anagram", "mangaar"))
+# print(x.minSteps("xxyyzz", "xxyyzz"))
+# print(x.minSteps("friend", "family"))
 
 # wrong for this (correct: 18)
 print(x.minSteps("gctcxyuluxjuxnsvmomavutrrfb", "qijrjrhqqjxjtprybrzpyfyqtzf"))

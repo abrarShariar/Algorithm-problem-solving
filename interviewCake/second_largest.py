@@ -1,47 +1,28 @@
 
 import unittest
+# SOLVED: https://www.interviewcake.com/question/python3/second-largest-item-in-bst?course=fc1&section=trees-graphs
 
-# def find_second_largest(root_node):
-
-#     # Find the second largest item in the binary search tree
-#     if root_node == None:
-#         return
-
-#     elif root_node.right == None and root_node.left != None:
-#         return root_node.left.value
+def find_largest(root):
     
-#     elif root_node.left == None and root_node.right != None:
-#         return root_node.value
-
-#     return find_second_largest(root_node.right)
+    while root.right != None:
+        root = root.right
+    return root.value
 
 
 def find_second_largest(root):
-    if root == None:
-        return
+    if root == None or (root.right == None and root.left == None):
+        raise Exception()
+
+    mx = root.value
+    # traverse the right nodes
+    while root.right != None:
+        mx = root.value
+        root = root.right
+        
+    if root.left != None:
+        mx = find_largest(root.left)
     
-    que = []
-    # root, left, right
-    mx = [root.value, 0, 0]
-    que.append(root)
-
-    while len(que):
-        node = que.pop(0)
-        mx[0] = node.value
-        if node.left != None:
-            que.append(node.left)
-            mx[1] = node.left.value
-        else:
-            mx[1] = 0
-        if node.right != None:
-            que.append(node.right)
-            mx[2] = node.right.value 
-        else:
-            mx[2] = 0
-
-
-    mx.sort()
-    return mx[1]
+    return mx
 
 # Tests
 class Test(unittest.TestCase):
@@ -139,24 +120,30 @@ class Test(unittest.TestCase):
 
 unittest.main(verbosity=2)      
 
-# class BinaryTreeNode:
-#     def __init__(self, value):
-#         self.value = value
-#         self.left = None
-#         self.right = None
+class BinaryTreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
 
-#     def insert_left(self, value):
-#         self.left = BinaryTreeNode(value)
-#         return self.left
+    def insert_left(self, value):
+        self.left = BinaryTreeNode(value)
+        return self.left
 
-#     def insert_right(self, value):
-#         self.right = BinaryTreeNode(value)
-#         return self.right
+    def insert_right(self, value):
+        self.right = BinaryTreeNode(value)
+        return self.right
 
 # tree = BinaryTreeNode(60)
 # left = tree.insert_left(55)
 # right = tree.insert_right(70)
 # right.insert_left(65)
-# # right.insert_right(79)
+# right.insert_right(79)
 
-# find_second_largest(tree)
+# tree = BinaryTreeNode(50)
+# right = tree.insert_right(60)
+# right_right = right.insert_right(70)
+# right_right.insert_left(69)
+# right_right.insert_right(80)
+
+# print(find_second_largest(tree))

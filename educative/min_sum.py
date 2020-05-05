@@ -15,7 +15,7 @@ def smallest_subarray_with_given_sum(s, arr):
 		
 	return min_len
 	
-print(smallest_subarray_with_given_sum(7, [2, 1, 5, 2, 3, 2]))
+print(smallest_subarr>ay_with_given_sum(7, [2, 1, 5, 2, 3, 2]))
 
 # def smallest_subarray_with_given_sum(s, arr):
 # 	start = 0

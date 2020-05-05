@@ -8,7 +8,6 @@ def find_largest(root):
         root = root.right
     return root.value
 
-
 def find_second_largest(root):
     if root == None or (root.right == None and root.left == None):
         raise Exception()

@@ -1,22 +1,25 @@
 # def merge_interval(interval_list):
 # 	interval_list.sort(key = lambda x: x[0])
 # 	current_index = 1
-# 	result = [interval_list[0][0], interval_list[0][1]]
+# 	result = [[] * len(interval_list)]
 # 	result_index = 0
 	
 # 	while current_index < len(interval_list):
 # 		c_start = interval_list[current_index][0]
 # 		c_end = interval_list[current_index][1]
-		
-# 		l_start = result[result_index][0]
-# 		l_end = result[result_index][1]
 
-# 		if interval_list[current_index][0] >= interval_list[prev][0] and interval_list[current_index][0] <= interval_list[prev][1]:
-			
-# 			result[result_index] = [interval_list[prev][0], max(interval_list[current_index][1], interval_list[current_index][1])]
+# 		if len(result) == 0:
+# 			l_start = result[current_index - 1][0]
+# 			l_end = result[current_index - 1][1]
+# 		else:
+# 			l_start = result[result_index][0]
+# 			l_end = result[result_index][1]
+
+# 		if c_start >= l_start and c_start <= l_end:
+# 			result[result_index] = [l_start, max(c_end, l_end)]
 # 			result_index += 1
 
-# 		current += 1
+# 		current_index += 1
 
 # 	return result
 

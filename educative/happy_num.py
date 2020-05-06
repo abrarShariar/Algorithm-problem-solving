@@ -7,7 +7,6 @@ def find_happy_number(num):
       break
   return slow == 1  # see if the cycle is stuck on the number '1'
 
-
 def find_square_sum(num):
   _sum = 0
   while (num > 0):
@@ -17,18 +16,18 @@ def find_square_sum(num):
   return _sum
 
 
-# def find_happy_number(num):
-# 	dict = {}
-# 	while num != 1:
-# 		# split the num by digits
-# 		num_list = [int(i)**2 for i in str(num)]
-# 		num = sum(num_list)
-# 		dict[num] = dict.get(num, 0) + 1
-# 		if dict[num] > 1:
-# 			# found a cycle
-# 			return False
+def find_happy_number(num):
+	dict = {}
+	while num != 1:
+		# split the num by digits
+		num_list = [int(i)**2 for i in str(num)]
+		num = sum(num_list)
+		dict[num] = dict.get(num, 0) + 1
+		if dict[num] > 1:
+			# found a cycle
+			return False
 
-# 	return True
+	return True
 
 
 def main():

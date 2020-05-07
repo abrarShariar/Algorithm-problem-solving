@@ -25,15 +25,19 @@ def reverse_sub_list(head, p, q):
 	
 	# reverse the cycle
 	prev = None
-	current = Node(head.next.value, head.next.next)
+	current = head.next
+	start = head.next
+	resume = tail.next
 
-	while current != tail.next:
-		next = Node(current.next.value, current.next.next)
+	while current != None:
+		next = current.next
 		current.next = prev
+		if current == tail:
+			break
 		prev = current
 		current = next
 
-	start.next = tail.next
+	start.next = resume
 	head.next = tail
 	
 	return head

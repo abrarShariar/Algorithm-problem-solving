@@ -1,35 +1,42 @@
-# SOLVED O(N)
+# sample I/O
+# [[1,3], [5,7], [8,12]], [4,6]
+# [[1,3], [4,7], [8,12]]
+
+# [[1,3], [5,7], [8,12]]
+# [4,10]
+# [[1,3], [4,12]]
+
+# [[2,3],[5,7]]
+# [1,4]
+# [[1,4], [5,7]]
+
 def insert_interval(intervals, new_interval):
-	if len(intervals) == 0 or len(new_interval) == 0:
-		return []
-
-	intervals = sorted(intervals, key = lambda x: x[0])
+	i, START, END = 0, 0, 1
 	result = []
-	START = 0
-	END = 1
 
-	start_val = intervals[0][START]
-	end_val = intervals[0][END]
-
-	i = 0
-	while i < len(intervals):
-		current_start = intervals[i][START]
-		current_end = intervals[i][END]
-		j = i
+	# loop over all intervals whose end date is before the new_interval's end date
+	while i < len(intervals) and intervals[i][END] < new_interval[START]:
+		result.append(intervals[i])
 		i += 1
-		while j < len(intervals) and intervals[j][START] >= new_interval[START] and intervals[j][START] <= new_interval[END]:
-			new_interval[START] = min(new_interval[START], intervals[j][START])
-			new_interval[END] = max(new_interval[END], intervals[j][END])
-			current_start = new_interval[START]
-			current_end = new_interval[END]
-			j += 1
-			i = j
-		
-		result.append([current_start, current_end])
 	
+	# loop over and merge
+	while i < len(intervals) and intervals[i][START] <= new_interval[END]:
+		new_interval[START] = min(intervals[i][START], new_interval[START])
+		new_interval[END] = max(intervals[i][END], new_interval[END])
+		i += 1
+
+	# insert the merged interval
+	result.append([new_interval[START], new_interval[END]])
+
+	# insert any remaining intervals
+	while i < len(intervals):
+		result.append(intervals[i])
+		i += 1
+
 	return result
 
 print(insert_interval([[1,3], [5,7], [8,12]], [4,6]))
-print(insert_interval([[1, 3], [5, 7], [8, 12]], [4, 10]))
-print(insert_interval([[2, 3], [5, 7]], [1, 4]))
-print
+print(insert_interval([[1,3], [5,7], [8,12]], [4,10]))
+print(insert_interval([[2,3],[5,7]], [1,4]))
+print(insert_interval([[2,3],[5,7]], [100,400]))
+print(insert_interval([[2,3],[5,7]], [1,400]))

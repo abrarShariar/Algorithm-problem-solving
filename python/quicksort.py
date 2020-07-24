@@ -1,7 +1,7 @@
 # OK!
 # QUICKSORT
 
-data = [10,2,3,4,5,1, 100]
+data = [10,2,3,4,5,1,100]
 
 def quickSort (arr, low, high):
 	if low <= high:

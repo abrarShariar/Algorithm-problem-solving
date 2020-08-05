@@ -1,6 +1,5 @@
 import unittest
 
-
 def intersection (list1, list2):
 	# convert lists to dict
 	dict1 = {}

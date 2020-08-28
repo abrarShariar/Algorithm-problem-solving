@@ -16,6 +16,10 @@ class UnionFind:
 			if self.node_list[i] == first_node_val:
 				self.node_list[i] = second_node_val
 
+	def isConnected(self, first_node, second_node):
+		first_node_val = self.node_list[first_node]
+		second_node_val = self.node_list[second_node]
+		return first_node_val == second_node_val
 
 testU = UnionFind(9)
 testU.union(4, 3)
@@ -29,6 +33,13 @@ testU.union(6, 1)
 
 
 print(testU.node_list)
+print(testU.isConnected(5,2))
+print(testU.isConnected(8,9))
+print(testU.isConnected(0,9))
+
+
+
+
 
 
 

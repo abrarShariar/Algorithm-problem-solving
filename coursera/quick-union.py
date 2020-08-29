@@ -24,7 +24,6 @@ class QuickUnion:
 	def is_connected(self, first_node, second_node):
 		return self.find_root(first_node) == self.find_root(second_node)
 		
-
 test_union = QuickUnion(10)
 print(test_union.node_list)
 

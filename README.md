@@ -1,4 +1,4 @@
-# Problem-Solving
+# Algorithmic-problem-solving
 
 A repository where I keep all the "accepted" as well as problems that I am currently trying to solve
 

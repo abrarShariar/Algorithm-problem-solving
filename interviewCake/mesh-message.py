@@ -1,51 +1,80 @@
 import unittest
+from collections import deque
+
+# def get_path(graph, start_node, end_node):
+#   visited = [start_node]
+#   queue = [start_node]
+
+#   distance = {}
+#   predecessor = {}
+  
+#   dist_count = 0
+#   distance[start_node] = dist_count
+#   dist_count += 1
+
+#   while len(queue) > 0:
+#     current_node = queue.pop(0)
+    
+# 		if neighbour_node == end_node:
+#     	break
+
+#     if current_node in graph.keys():
+#       for neighbour_node in graph[current_node]:
+#         if neighbour_node not in visited:
+#           visited.append(neighbour_node)
+#           queue.append(neighbour_node)
+
+#           # populate distance and predecessor
+#           distance[neighbour_node] = dist_count
+#           predecessor[neighbour_node] = current_node
+
+
+#       dist_count += 1
+
+#   # loop over the predecessors' values from end node to find parent
+#   shortest_path = []
+#   parent_node = predecessor[end_node]
+#   shortest_path.append(parent_node)
+
+#   while parent_node in predecessor.keys():
+#     parent_node = predecessor[parent_node]
+#     shortest_path.append(parent_node)
+
+#   shortest_path = list(reversed(shortest_path))
+#   shortest_path.append(end_node)
+#   print(shortest_path)
 
 def get_path(graph, start_node, end_node):
-  visited = [start_node]
-  queue = [start_node]
+  if start_node not in graph:
+    raise Exception('Start node not in graph')
+  if end_node not in graph:
+    raise Exception('End node not in graph')
 
-  distance = {}
-  predecessor = {}
+  to_visit = deque()
+  to_visit.append(start_node)
+
+  visited_path = {start_node: None}
+
+  while len(to_visit) > 0:
+    current_node = to_visit.popleft()
+    
+    if current_node == end_node:
+      # construct the path and return 
+      path = [current_node]
+      while visited_path[current_node]:
+        current_node = visited_path[current_node]
+        path.append(current_node)
+      
+      return list(reversed(path))
+        
+    for neighbour_node in graph[current_node]:
+      if neighbour_node not in visited_path.keys():
+        to_visit.append(neighbour_node)
+        visited_path[neighbour_node] = current_node
   
-  dist_count = 0
-  distance[start_node] = dist_count
-  dist_count += 1
-
-  while len(queue) > 0:
-    current_node = queue.pop(0)
-
-    if current_node in graph.keys():
-      for neighbour_node in graph[current_node]:
-        if neighbour_node not in visited:
-          visited.append(neighbour_node)
-          queue.append(neighbour_node)
-
-          # populate distance and predecessor
-          distance[neighbour_node] = dist_count
-          predecessor[neighbour_node] = current_node
-
-          if neighbour_node == end_node:
-            break
-
-      dist_count += 1
-
-  # loop over the predecessors' values from end node to find parent
-  shortest_path = []
-  parent_node = predecessor[end_node]
-  shortest_path.append(parent_node)
-
-  while parent_node in predecessor.keys():
-    parent_node = predecessor[parent_node]
-    shortest_path.append(parent_node)
-
-  shortest_path = list(reversed(shortest_path))
-  shortest_path.append(end_node)
-  print(shortest_path)
-
-
+  return None
 
 # Tests
-
 class Test(unittest.TestCase):
 
     def setUp(self):

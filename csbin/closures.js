@@ -176,7 +176,11 @@ function cycleIterator(array) {
 
 // CHALLENGE 10
 function defineFirstArg(func, arg) {
-	
+  function subtractFrom20 (sm) {
+    return func(arg, sm);
+  }	
+  
+  return subtractFrom20;
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -187,13 +191,21 @@ console.log(subFrom20(5)); // => should log 15
 
 // CHALLENGE 11
 function dateStamp(func) {
-
+  const d = new Date();
+  function stampBy2 (num) {
+    const val = func(num);
+		return {
+      date: d.getDate(),
+      output: val
+    }
+  }
+  return stampBy2;
 }
 
 // /*** Uncomment these to check your work! ***/
-// const stampedMultBy2 = dateStamp(n => n * 2);
-// console.log(stampedMultBy2(4)); // => should log { date: (today's date), output: 8 }
-// console.log(stampedMultBy2(6)); // => should log { date: (today's date), output: 12 }
+const stampedMultBy2 = dateStamp(n => n * 2);
+console.log(stampedMultBy2(4)); // => should log { date: (today's date), output: 8 }
+console.log(stampedMultBy2(6)); // => should log { date: (today's date), output: 12 }
 
 
 // CHALLENGE 12
@@ -210,14 +222,30 @@ function censor() {
 
 // CHALLENGE 13
 function createSecretHolder(secret) {
+  let localSecret = secret;
+  
+  function mySecHolder () {
+  	const secretHolder = {
+      getSecret: () => {
+        return localSecret;
+      }
 
+      setSecret: (newSecret) => {
+        localSecret = newSecret;
+      }
+    }
+
+    return secretHolder;
+  }
+  
+	return mySecHolder;
 }
 
 // /*** Uncomment these to check your work! ***/
-// obj = createSecretHolder(5)
-// obj.getSecret() // => returns 5
-// obj.setSecret(2)
-// obj.getSecret() // => returns 2
+obj = createSecretHolder(5)
+obj.getSecret() // => returns 5
+obj.setSecret(2)
+obj.getSecret() // => returns 2
 
 
 // CHALLENGE 14

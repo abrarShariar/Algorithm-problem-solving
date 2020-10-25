@@ -4,7 +4,7 @@ def findMergeNode(head1, head2):
     current1 = head1
     current2 = head2
     while current1 != current2:
-        if current1 is None:
+        if current1p is None:
             current1 = head2
         else:
             current1 = current1.next

@@ -8,40 +8,36 @@ import sys
 
 # Complete the freqQuery function below.
 def freqQuery(queries):
-	num_dict = {}
 	freq_dict = {}
-	result_list = []
+	freq_freq_dict = {}
+	result = []
 
-	for i in range(0, len(queries)):
-		index_var = queries[i][0]
-		key_var = queries[i][1]
+	for i in range(len(queries)):
+		index = queries[i][0]
+		key = queries[i][1]
 
-		if index_var == 1:
-			prev_freq = num_dict.get(key_var, 0)
-			num_dict[key_var] = prev_freq + 1
+		if index == 1:
+			prev_freq = freq_dict.get(key, 0)
+			freq_dict[key] = prev_freq + 1
 			
-			if prev_freq != 0:
-				freq_dict[prev_freq] -= 1
-			
-			freq_dict[num_dict[key_var]] = freq_dict.get(num_dict[key_var], 0) + 1
+			if prev_freq > 0:
+				freq_freq_dict[prev_freq] = freq_freq_dict.get(prev_freq, 0) - 1
+
+			freq_freq_dict[prev_freq + 1] = freq_freq_dict.get(prev_freq + 1, 0) + 1
 		
-		elif index_var == 2:
-			if num_dict.get(key_var, 0) > 0:
-				prev_freq = num_dict.get(key_var, 0)
-				num_dict[key_var] = prev_freq - 1
+		elif index == 2:
+			if freq_dict.get(key, 0) > 0:
+				freq_freq_dict[freq_dict[key]] -= 1 
+				freq_dict[key] -= 1
+				freq_freq_dict[freq_dict[key]] = freq_freq_dict.get(key, 0) + 1
 
-				if prev_freq != 0:
-					freq_dict[prev_freq] += 1
-
-				freq_dict[num_dict[key_var]] = freq_dict.get(num_dict[key_var], 0) - 1
-
-		elif index_var == 3:
-			if freq_dict.get(key_var, 0) <= 0:
-				result_list.append(0)
+		elif index == 3:
+			if freq_freq_dict.get(key, 0) > 0:
+				result.append(1)
 			else:
-				result_list.append(1)
+				result.append(0)
 
-	return result_list
+	return result
 
 if __name__ == '__main__':
 		# fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -59,4 +55,4 @@ if __name__ == '__main__':
 		# fptr.write('\n'.join(map(str, ans)))
 		# fptr.write('\n')
 
-		fptr.close()
+		# fptr.close()

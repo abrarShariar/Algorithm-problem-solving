@@ -21,5 +21,4 @@ def bfs(graph, startNode):
 				visited.append(current_node)
 				queue.append(child_node)
 
-
 bfs(graph, 'A')

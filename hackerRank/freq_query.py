@@ -6,7 +6,7 @@ import random
 import re
 import sys
 
-# Complete the freqQuery function below.
+# Complete the freqQuerxy function below.
 def freqQuery(queries):
 	freq_dict = {}
 	freq_freq_dict = {}
@@ -29,7 +29,7 @@ def freqQuery(queries):
 			if freq_dict.get(key, 0) > 0:
 				freq_freq_dict[freq_dict[key]] -= 1 
 				freq_dict[key] -= 1
-				freq_freq_dict[freq_dict[key]] = freq_freq_dict.get(key, 0) + 1
+				freq_freq_dict[freq_dict[key]] = freq_freq_dict.get(freq_dict[key], 0) + 1
 
 		elif index == 3:
 			if freq_freq_dict.get(key, 0) > 0:

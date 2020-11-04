@@ -47,7 +47,9 @@ def dks(graph, start_node, end_node):
 		path.append(parent_dict[end_node])
 		end_node = parent_dict[end_node]
 	
-	print(path)
+	print("The shortest path: ")
+	path.reverse()
+	print(" -> ".join(path))
 
 
 dks(graph, 'B', 'Pi')

@@ -1,7 +1,7 @@
 import math
 INFINITY = math.inf
 
-# O(n^2) solution
+# O(n^2) solution => not optimal
 def minToTotalWaitingTime(time_list, total_patient):
 	#	the total waiting time we return
 	waiting_time = 0
@@ -24,5 +24,18 @@ def minToTotalWaitingTime(time_list, total_patient):
 
 	return waiting_time
 
-print(minToTotalWaitingTime([4,1,10], 3))
+# optimal
+# O(nlogn)
+def minToTotalWaitingTime_optimal(time_list, total_patient):
+	waiting_time = 0
+
+	# sort the time_list
+	time_list.sort()
+
+	for i in range(0, len(time_list) - 1):
+		waiting_time = waiting_time + (total_patient - (i+1))*time_list[i] 
+	
+	return waiting_time
+
+print(minToTotalWaitingTime_optimal([4,100,10], 3))
 

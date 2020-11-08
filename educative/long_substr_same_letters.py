@@ -1,43 +1,40 @@
-# DOES NOT SOLVE
+def length_of_longest_substring(str1, k):
+  window_start, max_length, max_repeat_letter_count = 0, 0, 0
 
-def length_of_longest_substring(str, k):
-	if len(str) <= 1:
-		return 1
+  frequency_map = {}
 
-	max_len = 1
-	start_index = 0
-	end_index = start_index + 1
-	
-	while end_index < len(str):
-		
-		current_element = str[start_index]
-		temp_k = k
-		first_change_index = -1
+  # Try to extend the range [window_start, window_end]
+	for window_end in range(len(str1)):
+    right_char = str1[window_end]
 
-		while temp_k >= 0 and end_index < len(str):
-			if str[end_index] != current_element:
-				temp_k -= 1
-				if first_change_index == -1:
-					first_change_index = end_index
+    if right_char not in frequency_map:
+      frequency_map[right_char] = 0
 
-			if end_index >= len(str):
-				return max_len
+    frequency_map[right_char] += 1
 
-			end_index += 1
+    max_repeat_letter_count = max(
+      max_repeat_letter_count, frequency_map[right_char])
 
-		max_len = max(max_len, end_index - start_index)
-		if end_index >= len(str):
-			return max_len
+    # Current window size is from window_start to window_end, overall we have a letter which is
+    # repeating 'max_repeat_letter_count' times, this means we can have a window which has one letter
+    # repeating 'max_repeat_letter_count' times and the remaining letters we should replace.
+    # if the remaining letters are more than 'k', it is the time to shrink the window as we
+    # are not allowed to replace more than 'k' letters
 
-		start_index = first_change_index
-		end_index = start_index + 1
+		current_length = (window_end - window_start) + 1
+   
+	 if (current_length - max_repeat_letter_count) > k:
+      left_char = str1[window_start]
+      frequency_map[left_char] -= 1
+      window_start += 1
 
-	return max_len
+    max_length = max(max_length, current_length)
 
-print(length_of_longest_substring("abbcb", 1))
-print(length_of_longest_substring("aabccbb", 2))
-print(length_of_longest_substring("abccde", 1))
+  return max_length
 
+def main():
+  print(length_of_longest_substring("aabccbb", 2))
+  print(length_of_longest_substring("abbcb", 1))
+  print(length_of_longest_substring("abccde", 1))
 
-			
-  
+main()

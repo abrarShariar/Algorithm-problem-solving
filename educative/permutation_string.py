@@ -23,7 +23,7 @@ def find_permutation(str, pattern):
 			if left_char in pattern_dict:
 				if pattern_dict[left_char] == 0:
 					matched -= 1
-
+				
 				pattern_dict[left_char] = pattern_dict[left_char] + 1
 
 			window_start += 1

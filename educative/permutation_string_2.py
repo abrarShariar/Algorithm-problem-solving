@@ -24,6 +24,7 @@ def find_permutation(str1, pattern):
     if window_end >= len(pattern) - 1:
       left_char = str1[window_start]
       window_start += 1
+			
       if left_char in char_frequency:
         if char_frequency[left_char] == 0:
           matched -= 1

@@ -33,4 +33,4 @@ def find_string_anagrams(str, pattern):
 
 	return result_indexes
 
-print(find_string_anagrams("ppqp", "pq"))
+print(find_string_anagrams("pppsqp", "pq"))

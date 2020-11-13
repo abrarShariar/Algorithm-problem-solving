@@ -1,8 +1,6 @@
-
-
 def get_max_profit(stock_prices):
 
-    # Calculate the max profit
+  # Calculate the max profit
 	buy_price = stock_prices[0]
 	sell_price = stock_prices[1]
 

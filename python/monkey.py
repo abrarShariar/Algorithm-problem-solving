@@ -44,7 +44,5 @@ def generate_string(g_str):
 			current_list[i] = replace_char
 
 	return "".join(current_list)
-
-
 		
 main()

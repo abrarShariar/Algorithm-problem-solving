@@ -18,9 +18,13 @@ for i in range(len(sorted_points) - 1):
 
     # overlapping
     if current_end >= next_start:
+        if current_end in result_points or next_start in result_points:
+            continue
+
         if current_end <= next_end:
             result_points.add(current_end)
         else:
             result_points.add(next_end)
 
-print(result_points)
+print(len(result_points))
+print(" ".join(list(map(str, result_points))))

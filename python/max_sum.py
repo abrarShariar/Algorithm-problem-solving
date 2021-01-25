@@ -22,6 +22,13 @@ def get_max_even_sum (input_arr, k):
     # print(odd_arr)       
 
     # Go Greedy
+    # think about the case with only 1 or 2 element
+    # for 1:
+        # we must take the highest from the even Array
+        # for 2: we can either take (even + even = even) or (odd + odd = even) 
+            # since even + odd is not equal to even
+            # we take max(current + next number) from even and odd array
+
     while k > 0:
         if k % 2 == 1:
             if (len(even_arr) > 0):
@@ -55,17 +62,15 @@ def get_max_even_sum (input_arr, k):
 # print(get_max_even_sum([], 0))
 # print(get_max_even_sum([1,2], 1))
 # print(get_max_even_sum([1,2], 2))
-
 # print(get_max_even_sum([ 2, 4, 10, 3, 5 ], 3))
 # print(get_max_even_sum([ 5,5,1,1,3 ], 3))
-
 # print(get_max_even_sum([4,2,6,7,8], 3))
 # print(get_max_even_sum([5, 5, 2, 4, 3], 3))
-
 # print(get_max_even_sum([-1,-2,-2], 3))
-
 # print(get_max_even_sum([1,2,4,11], 100))
 # print(get_max_even_sum([1,2,4,11], 1))
+
+print(get_max_even_sum([2, 5, 1, 1, 3], 2))
 
 
 

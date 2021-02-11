@@ -4,6 +4,7 @@ class Graph:
 
     # constructor
     def __init__(self):
+        # making a dictionary with default value set to list for each key
         self.graph = defaultdict(list)
 
     def addEdge(self, start_node, end_node):

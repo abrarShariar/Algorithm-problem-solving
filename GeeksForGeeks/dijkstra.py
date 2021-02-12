@@ -30,23 +30,26 @@ class Graph:
         is_visited = set()
         queue = []
 
-        start_node = self.graph.nodes[start_node_value]
+        start_node = self.nodes[start_node_value]
         start_node.distance = 0
 
         queue.append(start_node)
+        is_visited.add(start_node_value)
 
         while len(queue) > 0:
 
             current_node = queue.pop(0)
 
-            for neighbour in self.graph[current_node.value]:
+            # print(current_node.value)
+
+            for neighbour in self.graph[current_node]:
+                # print(neighbour.value)
                 if neighbour.value not in is_visited:
-                    is_visited.append(neighbour.value)
+                    is_visited.add(neighbour.value)
                     queue.append(neighbour)
                     current_distance = current_node.distance + self.edge_weight[(current_node.value, neighbour.value)]
+                    # print(current_distance)
                     neighbour.distance = min(neighbour.distance, current_distance)
-        
-
 
 node_value_list = ['A', 'B', 'C', 'D', 'E', 'F']
 graph = Graph()
@@ -62,8 +65,13 @@ graph.add_edge(graph.nodes['E'], graph.nodes['D'], 2)
 graph.add_edge(graph.nodes['D'], graph.nodes['F'], 1)
 graph.add_edge(graph.nodes['E'], graph.nodes['F'], 5)
 
+graph.djks('A')
 
 print(graph.nodes['B'].distance)
+print(graph.nodes['C'].distance)
+print(graph.nodes['E'].distance)
+
+
 
 
 

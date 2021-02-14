@@ -41,28 +41,29 @@ def createAnagram(item):
     
     return anagram
 
-# def isAnagram(item, anagram_list):
-#     #  over each anagram in anagram list
-#         # check if the item chars match up with the anagram
-#     is_anagram = False
+def isAnagram(item, anagram_list):
+    #  over each anagram in anagram list
+        # check if the item chars match up with the anagram
+    is_anagram = False
     
-#     # create a anagram dict for the item
-#     anagram_item_dict = createAnagram(item)
+    # create a anagram dict for the item
+    anagram_item_dict = createAnagram(item)
         
-#     for i in range(len(anagram_list)):
-#         is_anagram = True
-#         anagram_dict = anagram_list[i]
+    for i in range(len(anagram_list)):
+        is_anagram = True
+        anagram_dict = anagram_list[i]
 
-#         # check if the anagram_dict and anagram_item_dict are sames
-#         for key, value in anagram_dict.items():
-#             if key not in anagram_item_dict or value != anagram_item_dict[key]:
-#                 is_anagram = False
-#                 break
+        # check if the anagram_dict and anagram_item_dict are sames
+        for key, value in anagram_dict.items():
+            if key not in anagram_item_dict or value != anagram_item_dict[key]:
+                is_anagram = False
+                break
         
-#         if is_anagram:
-#             break
+        if is_anagram:
+            break
     
-#     return is_anagram
+    return is_anagram
+
 
 
 if __name__ == '__main__':

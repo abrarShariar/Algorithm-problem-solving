@@ -1,21 +1,30 @@
 def nonConstructibleChange(coins):
     # Write your code here.
     coins.sort()
-    max_coin = coins[len(coins) - 1]
-    # count the max till max_coin
-    second_greatest_possible = 0
-    
-    for i in range(len(coins) - 1):
-        second_greatest_possible += coins[i]
-    
-    # prepare a dictionary
-    coin_count_dict = {}
-    for i in range(1, max_coin):
-        coin_count_dict[coins[i]] = coin_count_dict.get(coins[i], 0) + 1
 
-    # start from the second greatest possible
-    # go to previous
-    # check if 
+    if len(coins) == 0:
+        return 1
+    elif len(coins) == 1:
+        return 2 if coins[0] == 1 else 1
+    
+    running_sum = coins[0]
+    for i in range(1, len(coins)):
+        current_coin = coins[i]
+        if not (current_coin <= running_sum) and current_coin != running_sum + 1:
+            return running_sum + 1
+
+        running_sum += current_coin
+    
+    return running_sum + 1
+
+print(nonConstructibleChange([1,2,4]))
+print(nonConstructibleChange([1]))
+print(nonConstructibleChange([0]))
+
+print(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22]))
+
+print(nonConstructibleChange([1, 5, 1, 1, 1, 10, 15, 20, 100]))
+
 
 
 

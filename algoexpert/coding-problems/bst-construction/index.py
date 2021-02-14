@@ -44,7 +44,8 @@ class BST:
     def remove(self, value):
         # Write your code here.
         # Do not edit the return statement of this method.
-        return self
+        # keep going right till we find the largest
+        # this is a leaf nod
 
 
 def depth_first_traverse(root_node):

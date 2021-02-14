@@ -1,9 +1,5 @@
 import math
 
-
-# O(V^2) + O(e)
-# 
-
 def dijkstrasAlgorithm(start, edges): 
     
     # total number of vertices
@@ -18,14 +14,14 @@ def dijkstrasAlgorithm(start, edges):
     while len(visited) != total_vertices:
         # get the node with minimum distance => visit it
         currentNode, currentMinDistance = getNextMinVertex(visited, minDistance)
-        minDistance[currentNode] = currentMinDistance
-
+        # this part means we only node/nodes that are unvisted 
         if currentMinDistance == float('inf'):
             break
         
         visited.add(currentNode)
 
         # visit all unvisited neighbours of currentNode
+        # update their min distance
         for neighbour in edges[currentNode]:
             node, distance = neighbour 
 
@@ -36,6 +32,8 @@ def dijkstrasAlgorithm(start, edges):
 
     return [-1 if val == float('inf') else val for val in minDistance]
 
+
+# Notice that we are always taking the next node with the smallest distance from the current node
 def getNextMinVertex(visited, distance):
     currentMinDistance = float('inf')
     currentMinVertex = None

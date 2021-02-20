@@ -6,9 +6,11 @@ def taskAssignment(k, tasks):
     # Write your code here.
     result_tasks = []
     # sort the tasks
+    # O(nlogn)
     sorted_tasks = sorted(tasks)
     # map the task time to the index
     tasks_dict = defaultdict(list)
+    # O(n)
     for i in range(len(tasks)):
         tasks_dict[tasks[i]].append(i)
 

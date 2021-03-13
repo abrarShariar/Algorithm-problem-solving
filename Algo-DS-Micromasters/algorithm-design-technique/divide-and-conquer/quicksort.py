@@ -9,6 +9,9 @@
     # 2. the i index tracks the items which are greter than pivot
 # 5. so anytime we find an item in A[i] < pivot => swap with the A[j+1]...since j is the last item which is less than pivot
 # 6. at last we swap the leftmost item (the pivot) with the j (since the A[j] is ofcourse less than the pivot)
+# KEY NOTE: lists are mutable => passing it into functions actually modifies it 
+# QUICK sort is an inplace algo
+
 
 def partition(A, left, right):
     # take the pivot

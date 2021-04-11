@@ -1,8 +1,8 @@
 # SOLVED!
-
-def longest_peak(array):
+def longestPeak(array):
     # find the peaks
     peak_indices = []
+    # O(n)
     for i in range(1, len(array) - 1):
         # if the current index is greater than the adjacent two indices
         current_peak = array[i]

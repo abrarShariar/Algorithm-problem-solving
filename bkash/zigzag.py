@@ -23,7 +23,6 @@ def zigzag_traversal(input_list):
 		left_node_pointer += 2
 		right_node_pointer += 2
 
-
 	return result_list
 
 print(zigzag_traversal([3,9,20,None,None,15,7, 1, 2, 4, 5, 6, 7, 8, 9]))

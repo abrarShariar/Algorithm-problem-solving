@@ -1,5 +1,6 @@
 # SOLVED
 def reverseWordsInString(string):
+	# create a lis of all characters
 	char_list = list(string)
 	
 	# reverse the whole string

@@ -1,3 +1,4 @@
+# SOLVED
 def edit_distance_matrix(str1, str2):
 	row = len(str1) + 1
 	col = len(str2) + 1
@@ -6,7 +7,6 @@ def edit_distance_matrix(str1, str2):
 	
 	for i in range(row):
 		for j in range(col):
-			print(i,j)
 			if i == 0:
 				edit_distance_matrix[i][j] = j
 			elif j == 0:
@@ -24,14 +24,17 @@ def edit_distance_matrix(str1, str2):
 					)
 					edit_distance_matrix[i][j] = min_distance
 	
-	return edit_distance_matrix
+	return edit_distance_matrix[len(str1)][len(str2)]
 
 # result_matrix = edit_distance_matrix('ME', 'EDIT')
 # result_matrix = edit_distance_matrix('CAT', 'CAT')
-result_matrix = edit_distance_matrix('EDITING', "DISTANCE")
+str1 = input()
+str2 = input()
+
+result = edit_distance_matrix(str1, str2)
 
 # the last index should give the desired min index
-print(result_matrix)
+print(result)
 
 # WRONG:
 # def edit_distance(str1, str2):

@@ -1,12 +1,38 @@
-def optimal_weight(W, w):
-	# write your code here
-	result = 0
-	# sort the w in desc order
-	w.sort(reverse=True)
-	for x in w:
-		if result + x <= W:
-			result = result + x
+# tutorial: https://www.youtube.com/watch?v=xCbYmUPvc2Q
+# 0/1 Knapsack 
 
-	return result
+def do_knapsack(max_weight, item_weights, item_values):
+	row = len(item_values) + 1
+	col = max_weight + 1
 
-print(optimal_weight(10, [1,4,8]))
+	# initialize the values matrix
+	# this will hold all our previous computations - DP way
+	values_matrix = [[0 for i in range(col)] for j in range(row)]
+	# loop over and populate the matrix 
+	# the fun begin here!
+	for i in range(1, row): 
+		for j in range(0, col):
+			item_value = item_values[i - 1]
+			item_weight = item_weights[i - 1]
+			current_max_weight = j
+			# check if the current_max_weight is less the allowed max weight
+			if item_weight <= current_max_weight:
+				# take the max of the two options:
+					# value of (the previous item + same weight)
+					# value of (the previous item + whatever remains after removing the current item weight) + current item's value
+				values_matrix[i][j] = max (
+					values_matrix[i-1][current_max_weight],
+					values_matrix[i-1][current_max_weight - item_weight] + item_weight
+				)
+			else:
+				# we cannot take any value for this item so assign the previous item's weight 
+				values_matrix[i][j] = values_matrix[i-1][j]
+
+	# the last cell is the answer
+	return values_matrix[len(values_matrix) - 1][len(values_matrix[0]) - 1]
+
+max_weight = 10
+item_weights = [1, 4, 8]
+item_values = [1 ,1, 1]
+print(do_knapsack(max_weight, item_weights, item_values))
+

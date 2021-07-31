@@ -1,30 +1,38 @@
-def knap(total_weight, input_values, input_weights):
-	values_list = [0 for w in range(total_weight + 1)]
-	total_input_items = len(input_values)
+# tutorial: https://www.youtube.com/watch?v=xCbYmUPvc2Q
+# 0/1 Knapsack 
 
-	# we are increasing the size of the knapsack
-	for w in range(1, total_weight + 1):
-		# initialize 
-		values_list[w] = 0
-		# loop over all the items in the list
-		for i in range(0, total_input_items):
-			if input_weights[i] <= w:
-				val = values_list[w - input_weights[i]] + input_values[i]
-				if val > values_list[w]:
-					values_list[w] = val
+def do_knapsack(max_weight, item_weights, item_values):
+	row = len(item_values) + 1
+	col = max_weight + 1
 
-	print(values_list)
-	return values_list[total_weight]					
-	
+	# initialize the values matrix
+	# this will hold all our previous computations - DP way
+	values_matrix = [[0 for i in range(col)] for j in range(row)]
+	# loop over and populate the matrix 
+	# the fun begin here!
+	for i in range(1, row): 
+		for j in range(0, col):
+			item_value = item_values[i - 1]
+			item_weight = item_weights[i - 1]
+			current_max_weight = j
+			# check if the current_max_weight is less the allowed max weight
+			if item_weight <= current_max_weight:
+				# take the max of the two options: [either taking this item or not taking this item]
+					# value of (the previous item + same weight) [not taking this item]
+					# value of (the previous item + whatever remains after removing the current item weight) + current item's value [taking this item]
+				values_matrix[i][j] = max (
+					values_matrix[i-1][current_max_weight],
+					values_matrix[i-1][current_max_weight - item_weight] + item_value
+				)
+			else:
+				# we cannot take any value for this item so assign the previous item's weight 
+				values_matrix[i][j] = values_matrix[i-1][j]
 
-input_weights = [
-	6, 3, 4, 2
-]
+	# the last cell is the answer
+	return values_matrix[len(values_matrix) - 1][len(values_matrix[0]) - 1]
 
-input_values = [
-	30, 14, 4, 2
-]
+max_weight = 10
+item_weights = [1, 1, 1, 1]
+item_values = [60, 50, 70, 30]
+print(do_knapsack(max_weight, item_weights, item_values))
 
-knapsack_total_weight = 10
-
-knap(knapsack_total_weight, input_values, input_weights)

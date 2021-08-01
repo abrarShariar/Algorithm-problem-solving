@@ -1,11 +1,10 @@
+# SOLVED
 # Uses python3
 import sys
 
 def fibonacci_sum_naive(n):
 	fibo_store = [0, 1]
 	last_digit_sum_run = 1
-
-
 	# if we mod by 60, the last digit starts repeating
 	# https://www.py4u.net/discuss/204192
 	mod_num = n % 60

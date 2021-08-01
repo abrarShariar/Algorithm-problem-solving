@@ -25,7 +25,7 @@ class Prototype:
         
 class Car:
     def __init__(self):
-        self.name = "Skylark"
+        self.name = "Skylar
         self.color = "Red"
         self.options = "Ex"
         

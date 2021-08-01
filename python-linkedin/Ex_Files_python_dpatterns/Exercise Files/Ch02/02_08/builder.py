@@ -4,10 +4,13 @@ class Director():
         self._builder = builder 
         
     def construct_car(self):
+		self._builder.create_new_car()
+		self._builder.add_model()
+		# self.
         
         
     def get_car(self):
-        
+        return self.
         
         
  
@@ -29,8 +32,6 @@ class SkyLarkBuilder(Builder):
 
     def add_tires(self):
         self.car.tires = "Regular tires"
-
-    
 
 
 class Car():

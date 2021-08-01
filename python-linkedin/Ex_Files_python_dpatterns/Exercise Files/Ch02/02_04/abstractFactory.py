@@ -7,6 +7,14 @@ class Dog:
 	def __str__(self):
 		return "Dog"
 
+class Bird:
+
+	def __str__(self):
+		return "My Bird"
+
+	def speak(self):
+		return "Chirp!"
+
 
 class DogFactory:
 	"""Concrete Factory"""
@@ -17,6 +25,15 @@ class DogFactory:
 	def get_food(self):
 		return "Dog Food"
 
+
+class BirdFactory:
+	"""Concrete Factory"""
+
+	def get_pet(self):
+		return Bird()
+	
+	def get_food(self):
+		return "Bird Food!"
 
 
 class PetStore:
@@ -41,8 +58,11 @@ class PetStore:
 #Create a Concrete Factory
 factory = DogFactory()
 
+birdFactory = BirdFactory()
+
 #Create a pet store housing our Abstract Factory
-shop = PetStore(factory)
+shop = PetStore(birdFactory)
+
 
 #Invoke the utility method to show the details of our pet
 shop.show_pet()

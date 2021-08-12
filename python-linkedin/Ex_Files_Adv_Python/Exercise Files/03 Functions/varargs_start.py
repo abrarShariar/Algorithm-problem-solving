@@ -2,13 +2,19 @@
 
 
 # TODO: define a function that takes variable arguments
-def addition():
-    pass
+def addition(*args):
+	print(args)
+	print(len(args))
+	print(type(args))
+
+	for arg in args:
+		print(arg)
+    
 
 
 def main():
     # TODO: pass different arguments
-    print(addition())
+    addition(['123123', '1231'], ['C++', 'Python3', 'JavaScript'])
 
     # TODO: pass an existing list
 

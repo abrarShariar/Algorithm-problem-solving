@@ -31,7 +31,6 @@ def partition(A, l, r):
 	# return the new pivot index
 	return j
 
-
 ll = [10,9,8,7,6,5,4,3,2,1]
 quick_sort(ll, 0, len(ll) - 1)
 print(ll)

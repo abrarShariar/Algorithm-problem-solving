@@ -26,6 +26,7 @@ void showStruct(struct person p)
 	printf("Author %s is %d years old\n",
 			p.name,
 			p.age);
+			
 	printf("%s has an IQ of %.1f\n",
 			p.name,
 			p.iq);

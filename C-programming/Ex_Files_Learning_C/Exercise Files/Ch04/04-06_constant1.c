@@ -1,12 +1,18 @@
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
-    const int x = 5;
+	const char name[255] = "Abrar Shariar";
+	printf("Your name: %s \n", name);
+	// strcat(name, "Hello");
+	printf("Your name: %s \n", name);
 
-    printf("%d squared is %d\n",x,x*x);
-    x = 10;
-    printf("%d squared is %d\n",x,x*x);
+    // const int x = 5;
+
+    // printf("%d squared is %d\n",x,x*x);
+    // x = 10;
+    // printf("%d squared is %d\n",x,x*x);
 
 
     return(0);

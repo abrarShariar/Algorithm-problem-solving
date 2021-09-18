@@ -3,12 +3,18 @@
 
 int main()
 {
-	int ch = 'a';
+	char input_char;
+	do {
+		input_char = getchar();
+		putchar(toupper(input_char));
+	} while (input_char != 'X');
 
-	printf("Original %c\n",ch);
-	printf("Lowercase %c\n",tolower(ch));
-	printf("Uppercase %c\n",toupper(ch));
-	printf("Original %c\n",ch);
+	// int ch = 'a';
+
+	// printf("Original %c\n",ch);
+	// printf("Lowercase %c\n",tolower(ch));
+	// printf("Uppercase %c\n",toupper(ch));
+	// printf("Original %c\n",ch);
 
 	return(0);
 }

@@ -8,13 +8,13 @@ class LRUCache:
 		self.linkedList = DoublyLinkedList()
 
 	# insert a block into the cache
-	def insertData(self, data)
+	def insertData(self, data):
 		# check if the block is in the cacheMap
 			# if yes: get the node and update the linkedList
 			# else: 
 				# if currentSize < cacheSize: get a free slot in cacheMap and update the linkedList
 				# else: evict the least recently used block from cacheMap and update the linkedList
-		currentBlock = cacheMap.get(data, None)
+		currentBlock = self.cacheMap.get(data, None)
 		
 		# It's a new block
 		if currentBlock == None:
@@ -26,7 +26,7 @@ class LRUCache:
 				nodeRemoved = self.linkedList.removeNodeFromTail()
 				print(f"Removed Node with value: {nodeRemoved.value}")
 				# free the slot in cacheMap
-				self.cacheMap[nodeRemoved.value] = None
+				self.cacheMap.pop(nodeRemoved.value)
 				
 				# assign the block to the new data
 				newBlock = self.linkedList.insertNodeAtHead(data)
@@ -36,9 +36,8 @@ class LRUCache:
 		else:
 			# make the node head since it's the most recently used now
 			newNode = self.linkedList.insertNodeAtHead(currentBlock.value)
-			self.cacheMap[newBlock.value] = newNode
-			self.removeNode(currentBlock)
-
+			self.cacheMap[currentBlock.value] = newNode
+			self.linkedList.removeNode(currentBlock)
 
 	# get a block from the cache
 	def getData(self, data):
@@ -49,6 +48,13 @@ class LRUCache:
 
 	# print current cache items
 	def printCache(self):
-		for block in cacheMap:
-			print(f"Block: {block.value}")
+		for key in self.cacheMap.keys():
+			print(f"Block: {key}")
+
+	def getMostRecentlyUsed(self):
+		return self.linkedList.getMostRecentlyUsed()
+	
+	def getLeastRecentlyUsed(self):
+		return self.linkedList.getLeastRecentlyUsed()
+
 

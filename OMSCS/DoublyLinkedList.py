@@ -43,7 +43,7 @@ class DoublyLinkedList:
 	# remove from tail
 	def removeNodeFromTail(self):
 		nodeToRemove = self.tail
-		prevNodoe= self.tail.prev
+		prevNode= self.tail.prev
 		nodeToRemove.prev = None
 		self.tail = prevNode
 		self.tail.next = None
@@ -57,8 +57,15 @@ class DoublyLinkedList:
 		prevNode.next = nextNode
 		nextNode.prev = prevNode
 		node.value = None
-		
-	
+
+	# get the most recently used data
+	def getMostRecentlyUsed(self):
+		return self.head.value
+
+	# get the least recently used data 
+	def getLeastRecentlyUsed(self):
+		return self.tail.value
+
 	# print all nodes
 	def printAllNodes(self):
 		startNode = self.head

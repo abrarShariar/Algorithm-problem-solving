@@ -73,6 +73,57 @@ class SinLinkedList:
 		self.totalNumberOfNodes += 1
 		return new_node
 
+	# remove from head of linked list
+	def remove_head(self):
+		if self.totalNumberOfNodes == 1:
+			self.head = None
+			self.tail = None
+			return
+
+		self.head = self.head.next
+		self.totalNumberOfNodes -= 1
+
+	# remove from tail
+	def remove_tail(self):
+		if self.totalNumberOfNodes == 1:
+			self.head = None
+			self.tail = None
+			return
+		
+		# find the node immediately before the tail and point the tail to it - before removing the tail
+		current_node = self.head
+		while current_node.next != self.tail:
+			current_node = current_node.next
+		
+		current_node.next = None
+		self.tail = current_node
+		del current_node
+		self.totalNumberOfNodes -= 1
+
+
+	# remove at any position
+	def remove_node_at_index(self, position):
+		if position == 0:
+			self.remove_head()
+			return
+		elif position == self.totalNumberOfNodes - 1:
+			self.remove_tail()
+			return
+		elif position >= self.totalNumberOfNodes:
+			print("TOO BIG BRUH!#%")
+			return
+
+		current_index = 0
+		current_node = self.head
+
+		# loop over and point the current_node to the node before the index
+		while current_index < position - 1:
+			current_node = current_node.next
+			current_index += 1
+
+		current_node.next = current_node.next.next
+		self.totalNumberOfNodes -= 1
+		
 
 	def print_all_nodes(self):
 		start_node = Node()
@@ -90,7 +141,6 @@ class SinLinkedList:
 		print("Finished printing all nodes")
 
 
-
 ll = SinLinkedList()
 ll.insert_head(0)
 ll.insert_tail(1)
@@ -102,6 +152,20 @@ ll.insert_node(55, 0)
 ll.insert_node(55, ll.totalNumberOfNodes - 1)
 
 ll.print_all_nodes()
+
+
+# test remove
+ll.remove_head()
+ll.remove_tail()
+
+ll.print_all_nodes()
+
+ll.remove_node_at_index(1)
+ll.remove_node_at_index(3)
+
+ll.print_all_nodes()
+
+
 
 
 

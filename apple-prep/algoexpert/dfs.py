@@ -14,12 +14,8 @@ class Node:
 
     def depthFirstSearch(self, array):
         array.append(self.name)
-        if len(self.children) <= 0:
-            return
-
         for child_node in self.children:
             child_node.depthFirstSearch(array)
-
         return array
 
 A = Node("A")

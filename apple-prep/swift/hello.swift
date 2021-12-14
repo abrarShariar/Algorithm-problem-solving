@@ -63,3 +63,39 @@
 // } else {
 //     print("Aren't we all nil")
 // }
+//
+// var num : Int?;
+//
+// num = 123123
+// if num == nil {
+//     print("There is no value")
+// } else {
+//     print("The value of num: \(num!)")
+// }
+
+// let op1: String?;
+//
+// op1 = "Swift"
+// op1 = "Abrar"
+//
+// print(op1!)
+
+
+// func multiple_returns () -> (String, String, Int) {
+//     return ("Abrar", "Python", 999)
+// }
+//
+// print(multiple_returns())
+
+// let lang = "Python"
+// assert(lang == "Swift", "You did not enter Swift")
+//
+
+// let lang: String = "Swift"
+// let res_num = (lang == "Python") ? 1 : 99
+// print(res_num)
+
+// inclusive range
+// for i in 90...91 {
+//     print(i)
+// }

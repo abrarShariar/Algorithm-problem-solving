@@ -117,3 +117,22 @@
 //
 // print_str(input_str: "Abrar")
 
+// function with multiple args
+
+// func multi_arg_foo (name: String, age: Int) -> (String, Int, [String]){
+//     print("Name: \(name)")
+//     print("Age: \(age)")
+//
+//     return (name+"ZZZ", age+100, ["Python3", "JavaScript", "C++"])
+// }
+//
+// let (new_name, new_age, new_skills) = multi_arg_foo(name: "Abrar", age: 99)
+// print(new_name, new_age, new_skills)
+
+var skills = ["C++", "Python", "JavaScript", "PHP", "Swift"]
+skills.append("C++")
+skills
+print(skills.count)
+for skill in skills {
+    print(skill)
+}

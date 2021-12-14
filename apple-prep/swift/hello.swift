@@ -99,3 +99,21 @@
 // for i in 90...91 {
 //     print(i)
 // }
+
+//
+// let quotation = """
+//     The White rabbit was living in a nice hole
+// """
+// let name: String = "FOX"
+//
+// // print(name.isEmpty)
+//
+// // func print_str (input_str: String) {
+// //     // for-in loop
+// //     for char in input_str {
+// //         print(char)
+// //     }
+// // }
+//
+// print_str(input_str: "Abrar")
+

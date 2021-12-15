@@ -129,10 +129,38 @@
 // let (new_name, new_age, new_skills) = multi_arg_foo(name: "Abrar", age: 99)
 // print(new_name, new_age, new_skills)
 
-var skills = ["C++", "Python", "JavaScript", "PHP", "Swift"]
-skills.append("C++")
-skills
-print(skills.count)
-for skill in skills {
-    print(skill)
+// var skills = ["C++", "Python", "JavaScript", "PHP", "Swift"]
+// skills.append("C++")
+// skills
+// print(skills.count)
+// for skill in skills {
+//     print(skill)
+// }
+
+var optional_name : String?
+optional_name = nil
+if let name = optional_name {
+    print("Hello \(name)")
 }
+
+// typical switch case
+//
+// let name: String = "Abrar"
+// // let ll: [Any] = ["A", 1, 2, 3, true]
+// // let data_dict = {
+// //     "Name": "Abrar",
+// //     "age": 26
+// // }
+// print(name[0])
+
+// var skills = ["C++", "Python3", "JavaScript"]
+// skills.append("PHP")
+// print_skills(my_skills: skills)
+//
+//
+// func print_skills(my_skills: [String]) {
+//     for index in 0...my_skills.count-1 {
+//         print(my_skills[index])
+//     }
+// }
+

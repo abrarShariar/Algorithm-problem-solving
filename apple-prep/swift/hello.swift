@@ -137,11 +137,11 @@
 //     print(skill)
 // }
 
-var optional_name : String?
-optional_name = nil
-if let name = optional_name {
-    print("Hello \(name)")
-}
+// var optional_name : String?
+// optional_name = nil
+// if let name = optional_name {
+//     print("Hello \(name)")
+// }
 
 // typical switch case
 //
@@ -162,5 +162,14 @@ if let name = optional_name {
 //     for index in 0...my_skills.count-1 {
 //         print(my_skills[index])
 //     }
+// }
+//
+// let test_str: String  = "Hello from Tokyo!"
+// let test_arr = Array(test_str)
+// print(test_arr[1])
+
+
+// for ch in test_str {
+//     print(ch)
 // }
 
